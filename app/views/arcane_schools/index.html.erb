@@ -1,0 +1,23 @@
+<h1>Listing arcane_schools</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @arcane_schools.each do |arcane_school| %>
+  <tr>
+    <td><%= arcane_school.name %></td>
+    <td><%= link_to 'Show', arcane_school %></td>
+    <td><%= link_to 'Edit', edit_arcane_school_path(arcane_school) %></td>
+    <td><%= link_to 'Destroy', arcane_school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Arcane school', new_arcane_school_path %>
