@@ -3,11 +3,15 @@ class Spell < ActiveRecord::Base
 	belongs_to :deity
 	belongs_to :source
 	
+	alias :school :arcane_school
+	
 	has_many :domains
 	has_many :subschools
 	
 	has_many :spell_levels
 	has_many :character_classes, through: :spell_levels
+	
+	alias :levels :spell_levels
 	
 	has_and_belongs_to_many :spell_attributes, join_table: 'spells_spell_attributes'
 	

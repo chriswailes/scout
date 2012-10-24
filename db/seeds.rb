@@ -47,20 +47,20 @@ ATTRIBUTES = [
 		]
 
 CHARACTER_CLASSES = {
-					sor: 'Sorcerer',
-					wiz: 'Wizard',
-					cleric: 'Cleric',
-					druid: 'Druid',
-					ranger: 'Ranger',
-					bard: 'Bard',
-					paladin: 'Paladin',
-					alchemist: 'Alchemist',
-					summoner: 'Summoner',
-					witch: 'Witch',
-					inquisitor: 'Inquisitor',
-					oracle: 'Oracle',
-					antipaladin: 'Anti-Paladin',
-					magus: 'Magus'
+					sor:			'Sorcerer',
+					wiz:			'Wizard',
+					cleric:		'Cleric',
+					druid:		'Druid',
+					ranger:		'Ranger',
+					bard:		'Bard',
+					paladin:		'Paladin',
+					alchemist:	'Alchemist',
+					summoner:		'Summoner',
+					witch:		'Witch',
+					inquisitor:	'Inquisitor',
+					oracle:		'Oracle',
+					antipaladin:	'Anti-Paladin',
+					magus:		'Magus'
 				}
 
 schools			= Hash.new { |h, k| r = ArcaneSchool.new(name: k);	r.save; h[k] = r }
@@ -138,11 +138,9 @@ spells.each do |row|
 	
 	spell_attrs = ATTRIBUTES.select { |a| spell_row.send(a) == '1' }.map { |a| attributes[a] }
 	
-	spell_levels = Array.new
-	CHARACTER_CLASSES.select { |cc, _| spell_row.send(cc) != 'NULL' }.each do |cc, _|
-		spell_levels << (r = SpellLevel.new(level: spell_row.send(cc).to_i))
-		
-		r.character_class = character_classes[cc]
+	spell_levels =
+	CHARACTER_CLASSES.select { |cc, _| spell_row.send(cc) != 'NULL' }.keys.map do |cc|
+		SpellLevel.new(level: spell_row.send(cc).to_i).tap { |r| r.character_class = character_classes[cc] }
 	end
 	
 	################
