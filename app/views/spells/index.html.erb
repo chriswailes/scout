@@ -1,0 +1,36 @@
+<h1>Let's look at some spells!</h1>
+
+<div id="search_box" name="search_box">
+	<%= form_tag('', :method => 'get') do %>
+		<%= label_tag(:keyword, 'Keyword:') %>
+		<%= text_field_tag(:keyword, @keyword) %>
+		
+		<div id="search_tabs" name="search_tabs">
+			<ul>
+				<li><a href="#cclass">Classes</a></li>
+				<li><a href="#schools">Schools</a></li>
+				<li><a href="#attributes">Attributes</a></li>
+			</ul>
+		
+		
+			<div id="cclass" name="cclass">
+				This is where character class search options will go.
+			</div>
+		
+			<div id="schools" name="schools">
+				This is where arcane school search options will go.
+			</div>
+		
+			<div id="attributes" name="attributes">
+				This is where spell attribute search options will go.
+			</div>
+		</div>
+		
+		<br />
+		<%= submit_tag("Search") %>
+	<% end %>
+</div>
+
+<div id="results" name="results">
+	There are <%= @spells.length %> spells that match that search.
+</div>

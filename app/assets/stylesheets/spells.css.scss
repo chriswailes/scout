@@ -1,0 +1,21 @@
+// Place all the styles related to the Spells controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#search_box, #results {
+	border: 2px solid black;
+	margin: 0 auto;
+	padding: 5px;
+	width: 800px;
+	text-align: center;
+}
+
+#search_box {
+	padding-bottom: 20px;
+}
+
+.subsearch_box {
+	border: 1px dashed black;
+	padding: 10px;
+	display: none;
+}

@@ -1,5 +1,6 @@
 Scout::Application.routes.draw do
   resources :arcane_schools
+  resources :spells
 
   get "home/index"
 
